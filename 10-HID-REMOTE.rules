@@ -1,0 +1,1 @@
+SUBSYSTEM=="usb", ENV{INTERFACE}=="*/2",ATTRS{idVendor}=="1241",ATTRS{idProduct}=="e000",ENV{HID_MAPPER_SUPPORTED}="1", RUN+="/bin/sh -c 'sleep 1 && /usr/local/bin/hid_mapper --lookup-id --manufacturer 1241 --product e000 --map /usr/local/etc/hid_remote/remote.map  2>&1 &'"

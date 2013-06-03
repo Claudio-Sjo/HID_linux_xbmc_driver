@@ -1,0 +1,1 @@
+./hid_mapper --lookup-id --manufacturer 1241 --product e000 --map 'lenovo_rc6.map'

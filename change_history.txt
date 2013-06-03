@@ -1,0 +1,5 @@
+2013-06-02 rev. 1.3a rewritten the function lookup_hid_product in file hid.c, still to fix main.cpp
+2013-05-27 rev. 1.2 Updated main.cpp with revision history, better help and check for rc from hid.c
+2013-05-24 rev. 1.1 Updated hid.c for using with HD-PLEX (long device list, no product name) 
+15-02-2013 Merged changes from http://www.coldsource.net/hid_mapper_beta.tar.gz as of 03-04-2011
+15-02-2013 Enhanced README

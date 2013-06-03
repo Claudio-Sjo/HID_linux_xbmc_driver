@@ -1,0 +1,34 @@
+<project version="Crimson Editor 3.60">
+</project>
+
+<workspace version="Crimson Editor 3.60">
+	<localfile path="C:\Users\teiclap\Documents\Private\src\hid_remote_driver-master\asus-spinel.map" linenum="1" placement="0:1:-1:-1:-8:-30:275:275:1567:929" />
+	<localfile path="C:\Users\teiclap\Documents\Private\src\hid_remote_driver-master\change_history.txt" linenum="1" placement="0:1:-1:-1:-8:-30:300:300:1592:958" />
+	<localfile path="C:\Users\teiclap\Documents\Private\src\hid_remote_driver-master\EventMapping.cpp" linenum="1" placement="0:1:-1:-1:-8:-30:0:0:1292:658" />
+	<localfile path="C:\Users\teiclap\Documents\Private\src\hid_remote_driver-master\Exception.cpp" linenum="1" placement="0:1:-1:-1:-8:-30:25:25:1317:683" />
+	<localfile path="C:\Users\teiclap\Documents\Private\src\hid_remote_driver-master\hid.c" linenum="168" placement="0:1:-1:-1:-8:-30:50:50:1342:708" />
+	<localfile path="C:\Users\teiclap\Documents\Private\src\hid_remote_driver-master\Keys.cpp" linenum="1" placement="0:1:-1:-1:-8:-30:75:75:1367:733" />
+	<localfile path="C:\Users\teiclap\Documents\Private\src\hid_remote_driver-master\keys_definition.cpp" linenum="1" placement="0:1:-1:-1:-8:-30:100:100:1392:758" />
+	<localfile path="C:\Users\teiclap\Documents\Private\src\hid_remote_driver-master\LICENSE" linenum="1" placement="0:1:-1:-1:-8:-30:125:125:1417:783" />
+	<localfile path="C:\Users\teiclap\Documents\Private\src\hid_remote_driver-master\main.cpp" linenum="220" placement="2:3:-1:-1:-8:-30:150:150:1442:808" />
+	<localfile path="C:\Users\teiclap\Documents\Private\src\hid_remote_driver-master\Makefile" linenum="1" placement="0:1:-1:-1:-8:-30:175:175:1467:833" />
+	<localfile path="C:\Users\teiclap\Documents\Private\src\hid_remote_driver-master\MapReader.cpp" linenum="1" placement="0:1:-1:-1:-8:-30:200:200:1492:858" />
+	<localfile path="C:\Users\teiclap\Documents\Private\src\hid_remote_driver-master\MapReaderMouse.cpp" linenum="1" placement="0:1:-1:-1:-8:-30:225:225:1517:883" />
+	<localfile path="C:\Users\teiclap\Documents\Private\src\hid_remote_driver-master\README.markdown" linenum="1" placement="0:1:-1:-1:-8:-30:250:250:1542:908" />
+	<localfile path="C:\Users\teiclap\Documents\Private\src\hid_remote_driver-master\remote.map" linenum="1" placement="0:1:-1:-1:-8:-30:275:275:1567:933" />
+	<localfile path="C:\Users\teiclap\Documents\Private\src\hid_remote_driver-master\run_remote" linenum="1" placement="0:1:-1:-1:-8:-30:300:300:1592:958" />
+	<localfile path="C:\Users\teiclap\Documents\Private\src\hid_remote_driver-master\signals.c" linenum="1" placement="0:1:-1:-1:-8:-30:0:0:1292:658" />
+	<localfile path="C:\Users\teiclap\Documents\Private\src\hid_remote_driver-master\uinput_device.c" linenum="1" placement="0:1:-1:-1:-8:-30:25:25:1317:683" />
+	<localfile path="C:\Users\teiclap\Documents\Private\src\hid_remote_driver-master\include\config.h" linenum="1" placement="0:1:-1:-1:-8:-30:50:50:1342:708" />
+	<localfile path="C:\Users\teiclap\Documents\Private\src\hid_remote_driver-master\include\EventMapping.h" linenum="1" placement="0:1:-1:-1:-8:-30:75:75:1367:733" />
+	<localfile path="C:\Users\teiclap\Documents\Private\src\hid_remote_driver-master\include\Exception.h" linenum="1" placement="0:1:-1:-1:-8:-30:100:100:1392:758" />
+	<localfile path="C:\Users\teiclap\Documents\Private\src\hid_remote_driver-master\include\hid.h" linenum="1" placement="0:1:-1:-1:-8:-30:125:125:1417:783" />
+	<localfile path="C:\Users\teiclap\Documents\Private\src\hid_remote_driver-master\include\Keys.h" linenum="1" placement="0:1:-1:-1:-8:-30:150:150:1442:808" />
+	<localfile path="C:\Users\teiclap\Documents\Private\src\hid_remote_driver-master\include\keys_definition.h" linenum="1" placement="0:1:-1:-1:-8:-30:175:175:1467:833" />
+	<localfile path="C:\Users\teiclap\Documents\Private\src\hid_remote_driver-master\include\LinkedList.h" linenum="1" placement="0:1:-1:-1:-8:-30:200:200:1492:858" />
+	<localfile path="C:\Users\teiclap\Documents\Private\src\hid_remote_driver-master\include\MapReader.h" linenum="1" placement="0:1:-1:-1:-8:-30:225:225:1517:883" />
+	<localfile path="C:\Users\teiclap\Documents\Private\src\hid_remote_driver-master\include\MapReaderMouse.h" linenum="1" placement="0:1:-1:-1:-8:-30:250:250:1542:908" />
+	<localfile path="C:\Users\teiclap\Documents\Private\src\hid_remote_driver-master\include\signals.h" linenum="1" placement="0:1:-1:-1:-8:-30:275:275:1567:933" />
+	<localfile path="C:\Users\teiclap\Documents\Private\src\hid_remote_driver-master\include\uinput_device.h" linenum="34" placement="0:1:-1:-1:-8:-30:300:300:1592:958" />
+</workspace>
+

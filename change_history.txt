@@ -1,3 +1,4 @@
+2013-06-04 rev. 1.3b removed the mode name, from now on only lookup-id mode exists
 2013-06-02 rev. 1.3a rewritten the function lookup_hid_product in file hid.c, still to fix main.cpp
 2013-05-27 rev. 1.2 Updated main.cpp with revision history, better help and check for rc from hid.c
 2013-05-24 rev. 1.1 Updated hid.c for using with HD-PLEX (long device list, no product name) 

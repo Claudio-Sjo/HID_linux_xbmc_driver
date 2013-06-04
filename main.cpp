@@ -46,16 +46,16 @@ struct st_hid_device hid_device;
 #define MODE_MAP      2
 
 #define	MAIN_REVISION	1
-#define	REV_LEVEL		"3a"
+#define	REV_LEVEL		"3b"
 
 static void print_usage(void)
 {
 	printf("hid_mapper ver %d.%s :\n",MAIN_REVISION,REV_LEVEL);	
 	printf("** Note that hid_mapper must be run with root privileges **\n");
 	printf("Usage :\n");
-	printf("  hid_mapper --list-devices [ --lookup-id ] [--wait-device <seconds>]\n");
-	printf("  hid_mapper [ --lookup-id ] [ --disable-repetition ] --manufacturer <manufacturer> --product <product name> [ --map <map file>] [ --map-mouse <map file> ] [--wait-device <seconds>]\n");
-	printf("  hid_mapper [ --lookup-id ] --learn --manufacturer <manufacturer> --product <product name> [--wait-device <seconds>]\n");
+	printf("  hid_mapper --list-devices [--wait-device <seconds>]\n");
+	printf("  hid_mapper [ --disable-repetition ] --manufacturer <manufacturer> --product <product name> [ --map <map file>] [ --map-mouse <map file> ] [--wait-device <seconds>]\n");
+	printf("  hid_mapper --learn --manufacturer <manufacturer> --product <product name> [--wait-device <seconds>]\n");
 }
 
 int main(int argc,char **argv)
@@ -63,7 +63,7 @@ int main(int argc,char **argv)
 	char manufacturer[256],product[256];
 	const char *map_filename = 0,*map_mouse_filename = 0;
 	int mode = MODE_MAP;
-	int lookup_mode = LOOKUP_MODE_NAME;
+	int lookup_mode = LOOKUP_MODE_ID;
 	int wait = -1;
 	bool disable_repetition = false;
 	
@@ -90,13 +90,8 @@ int main(int argc,char **argv)
 	}
 	
 	if(argc==2 && strcmp(argv[1],"--list-devices")==0)
-		return lookup_hid_product(LOOKUP_MODE_NAME,0,0,0);
+		return lookup_hid_product(lookup_mode,0,0,0);
 	
-	if(argc==3 && strcmp(argv[1],"--list-devices")==0 && strcmp(argv[2],"--lookup-id")==0)
-		return lookup_hid_product(LOOKUP_MODE_ID,0,0,0);
-
-	if(argc==3 && strcmp(argv[2],"--list-devices")==0 && strcmp(argv[1],"--lookup-id")==0)
-		return lookup_hid_product(LOOKUP_MODE_ID,0,0,0);			
 		
 	manufacturer[0] = '\0';
 	product[0] = '\0';
@@ -106,8 +101,6 @@ int main(int argc,char **argv)
 		{
 			if(strcmp(argv[i],"--learn")==0)
 				mode = MODE_LEARN;
-			else if(strcmp(argv[i],"--lookup-id")==0)
-				lookup_mode = LOOKUP_MODE_ID;
 			else if(strcmp(argv[i],"--disable-repetition")==0)
 				disable_repetition = true;
 		}

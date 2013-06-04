@@ -94,29 +94,29 @@ int lookup_hid_product(int lookup_mode,const char *manufacturer,const char *prod
 	while(entry = readdir(dh))
 	{
 // New patch
-{
-FILE *device_fd;
-char device_fn[255];
-char descr[255];
-int  found=0,exit=0;
-
-	sprintf(dev_vendor,"\n");
-	sprintf(dev_manufacturer,"\n");
-	sprintf(dev_product,"\n");
-
-//	printf("Entry name -->%s\n",entry->d_name);
-	sprintf(device_fn,"%s/%s/%s",SYSFS_HIDRAW_CLASS_PATH,entry->d_name,"device/uevent");
-//	printf("uevent file ->%s\n",device_fn);
-	if(strlen("hidraw") < strlen(entry->d_name))
-	{
-		device_fd = fopen(device_fn,"r");
-		do
 		{
-			fgets(descr,255,device_fd);
-			if(feof(device_fd))
-				exit++;
-			else
+		FILE *device_fd;
+		char device_fn[255];
+		char descr[255];
+		int  found=0,exit=0;
+
+		sprintf(dev_vendor,"\n");
+		sprintf(dev_manufacturer,"\n");
+		sprintf(dev_product,"\n");
+
+//		printf("Entry name -->%s\n",entry->d_name);
+		sprintf(device_fn,"%s/%s/%s",SYSFS_HIDRAW_CLASS_PATH,entry->d_name,"device/uevent");
+//		printf("uevent file ->%s\n",device_fn);
+		if(strlen("hidraw") < strlen(entry->d_name))
+		{
+			device_fd = fopen(device_fn,"r");
+			do
 			{
+				fgets(descr,255,device_fd);
+				if(feof(device_fd))
+					exit++;
+				else
+				{
 				int  lg = strlen(descr);
 				char *ptr = descr;
 //				printf("%s",descr);
@@ -128,13 +128,13 @@ int  found=0,exit=0;
                                         sprintf(dev_product,"%s",(char *)(ptr+lg-5));
 
 				found++;
-			}
-		} while(!exit);
-		fclose(device_fd);
-	}
+				} // else
+			} while(!exit);
+			fclose(device_fd);
+		}
 
-	if (found)
-	{
+		if (found)
+		{
 		char	*p;
 		dev_manufacturer[4]=(char)0;
 		dev_product[4]=(char)0;
@@ -144,11 +144,11 @@ int  found=0,exit=0;
 			*p=((*p>0x40) && (*p<0x5b)? *p|0x60 : *p);
 
 		if (0 == manufacturer)
-		{
+			{
 			printf("Found HID device at /dev/%s\n",entry->d_name);
 			printf("--- Vendor = %s",dev_vendor);
 			printf("--- manufacturer = %s, device = %s\n",dev_manufacturer,dev_product);
-		}
+			} // if 0 == manufacturer
 
 		if(manufacturer!=0)
 			if ((0==strcmp(manufacturer,dev_manufacturer) &&
@@ -164,129 +164,14 @@ int  found=0,exit=0;
 					{
 					closedir(dh);
 					return -7;
-					}
+					} // if re
 				
 				hid_device->num_interfaces++;
 
-				}
-	}
-}
-
-/*
-// End of new patch
-		re = snprintf(filename,PATH_MAX,SYSFS_HIDRAW_CLASS_PATH "/%s",entry->d_name);
-		if(re>=PATH_MAX)
-		{
-			closedir(dh);
-			return -1;
-		}
-		
-		if(entry->d_type!=DT_LNK)
-			continue;
-		
-		re = readlink(filename,symlink_filename,PATH_MAX);
-		if(re>0 && re<PATH_MAX)
-		{
-			buf[re] = '\0';
-			
-			if(manufacturer==0)
-				printf("Found HID device at /dev/%s\n",entry->d_name);
-			
-			// Read vendor name
-			if(lookup_mode==LOOKUP_MODE_NAME)
-				re = snprintf(filename,PATH_MAX,SYSFS_HIDRAW_CLASS_PATH "/%s/../../../../manufacturer",symlink_filename);
-			else if(lookup_mode==LOOKUP_MODE_ID)
-				re = snprintf(filename,PATH_MAX,SYSFS_HIDRAW_CLASS_PATH "/%s/../../../../idVendor",symlink_filename);
-			
- printf("Filename is %s\n",filename);
-			// printf("re: %d\n", re);
-			if(re>=PATH_MAX)
-			{
-				closedir(dh);
-				return -2;
-			}
-			
-			
-			if(get_file_contents(filename,buf,256)<0)
-			{
-				if(manufacturer==0)
-					printf("  Manufacturer : Unknown\n");
-// We continue scanning even in case of an unknown manufacturer
-				else
-				{
-					continue;
-//					closedir(dh);
-//					return -3;
-				}				
-			}
-			else
-			{
-				if(manufacturer==0)
-					printf("  Manufacturer : %s\n",buf);
-				else if(strcmp(buf,manufacturer)!=0)
-					continue;
-			}
-			
-			// Read product name
-			if(lookup_mode==LOOKUP_MODE_NAME)
-				re = snprintf(filename,PATH_MAX,SYSFS_HIDRAW_CLASS_PATH "/%s/../../../../product",symlink_filename);
-			else if(lookup_mode==LOOKUP_MODE_ID)
-				re = snprintf(filename,PATH_MAX,SYSFS_HIDRAW_CLASS_PATH "/%s/../../../../idProduct",symlink_filename);
-			
-			if(re>=PATH_MAX)
-			{
-				closedir(dh);
-				return -4;
-			}
-			
-			if(get_file_contents(filename,buf,256)<0)
-			{
-				if(manufacturer==0)
-				{
-					printf("  Product name : Unknown\n\n");
-					continue;
-				}
-//  We continue searching even in case if unknown product 
-				else
-				{
-					continue;
-//					closedir(dh);
-//					return -5;
-				}				
-			}
-			
-			if(manufacturer==0)
-				printf("  Product name : %s\n\n",buf);
-			else if(strcmp(buf,product)==0)
-			{
-				if(hid_device->num_interfaces>=HID_MAX_INTERFACES)
-				{
-					closedir(dh);
-					return -6;
-				}
-				
-				// We found one interface of HID device
-				re = snprintf(hid_device->interface_device[hid_device->num_interfaces],PATH_MAX,"/dev/%s",entry->d_name);
-				if(re>=PATH_MAX)
-				{
-					closedir(dh);
-					return -7;
-				}
-				
-				hid_device->num_interfaces++;
-				re = snprintf(hid_device->interface_device[hid_device->num_interfaces],PATH_MAX,"/dev/%s",entry->d_name);
-				if(re>=PATH_MAX)
-				{
-					closedir(dh);
-					return -7;
-				}
-				
-				hid_device->num_interfaces++;
-// printf("hid_device->num_interfaces=%d\n",hid_device->num_interfaces);
-			}
-		}
-*/
-	}
+				} // if (0==strcmp...
+			} // if (found)
+		} // End of new patch
+	} // While 
 	
 	closedir(dh);
 	

@@ -21,6 +21,7 @@
 #define _HID_H_
 
 #include <config.h>
+#include <sys/select.h>		/* Bug found by arleyristar 2014-04-01 */
 #include <linux/limits.h>
 
 #define LOOKUP_MODE_ID     1

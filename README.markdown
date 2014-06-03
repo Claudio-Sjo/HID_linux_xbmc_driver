@@ -30,7 +30,7 @@ $ cat /proc/bus/input/devices
 
 replace 1241 and e000 with the values of your device
 
-$ sudo ./hid_mapper --learn --manufacturer 1d57 --product ac01
+$ sudo ./hid_mapper --learn --manufacturer 1241 --product e000
 
 This will display the key codes for each key-down and key-up event 
 

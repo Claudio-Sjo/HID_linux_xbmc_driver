@@ -15,7 +15,7 @@
  * along with hid_mapper. If not, see <http://www.gnu.org/licenses/>.
  * 
  * Author: Thibault Kummer <bob@coldsource.net>
- * Updated by Claudio 20140603 due to errors in copying strings one character at a time using inconsistent data types
+ * Updated by Claudio 20140604 due to errors in copying strings one character at a time using an undefined bahavior
  * 
  */
 
@@ -44,10 +44,7 @@ void MapReader::LoadMap(const char *filename,EventMapping *map)
 	int i,event_length,event_type,line,key;
 	char buf[MAP_LINE_MAXLENGTH],event[EVENT_MAXLENGTH],mask[EVENT_MAXLENGTH],key_name[KEY_NAME_MAXLENGTH+1],error[256];
 	char *ptr;
-	// Patched by Claudio 20140603
-	char *dst;
-	// End of patch
-	
+
 	memset(mask,0,EVENT_MAXLENGTH);
 	
 	try
@@ -61,10 +58,6 @@ void MapReader::LoadMap(const char *filename,EventMapping *map)
 		{
 			ptr = buf;
 
-			// Patched by Claudio 20140603
-			dst = key_name;
-			// End of patch
-			
 			// Skip spaces if any
 			while(ptr[0]==' ')
 				ptr++;
@@ -111,7 +104,10 @@ void MapReader::LoadMap(const char *filename,EventMapping *map)
 				// Old code :
 				// key_name[i] = ptr[i++];
 				// New code
-				dst[i] = ptr[i++];
+				{
+				key_name[i] = ptr[i];
+				i++;
+				}
 				// End of patch
 			
 			if(i==KEY_NAME_MAXLENGTH)
@@ -120,13 +116,8 @@ void MapReader::LoadMap(const char *filename,EventMapping *map)
 				throw Exception("MapReader",error);
 			}
 			
-			// Patched by Claudio 20140603
-			// Old code :			
-			// key_name[i] = '\0';
-			// New code
-			dst[i] = '\0';
-			// End of patch
-			
+			key_name[i] = '\0';
+
 			ptr += i;
 			
 			// Skip spaces if any

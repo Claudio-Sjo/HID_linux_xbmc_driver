@@ -7,6 +7,7 @@ a hid remote or you bought one. The base code was provided by [coldsource](http:
 After having successfully used this for a while, I started having trouble
 when I upgraded my OS to Ubuntu 11.04 and later to Ubuntu 11.10. I debugged
 it a bit and provided this slightly hacked version that made it work for me.
+Tested on Lubuntu 14.04
 
 This is provided asis and without any guarantee. Please see LICENCE for more
 details.

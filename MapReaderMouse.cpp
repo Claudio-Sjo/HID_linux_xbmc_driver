@@ -103,7 +103,10 @@ void MapReaderMouse::LoadMap(const char *filename,EventMapping *map)
 			// Read action type
 			i = 0;
 			while(i<MOUSE_ACTION_MAXLENGTH && ptr[i]!='\0' && ptr[i]!='\n' && ptr[i]!=' ' && ptr[i]!=':')
-				action_type[i] = ptr[i++];
+				{
+				action_type[i] = ptr[i];
+				i++;
+				}
 			
 			if(i==MOUSE_ACTION_MAXLENGTH)
 			{

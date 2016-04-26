@@ -22,6 +22,9 @@
 #include <linux/input.h>
 
 const char *keys_char[] = {
+#ifdef BTN_0
+        "BTN_0",
+#endif
 #ifdef BTN_LEFT
 	"BTN_LEFT",
 #endif
@@ -30,6 +33,27 @@ const char *keys_char[] = {
 #endif
 #ifdef BTN_RIGHT
 	"BTN_RIGHT",
+#endif
+#ifdef BTN_START
+        "BTN_START",
+#endif
+#ifdef BTN_THUMBL
+        "BTN_THUMBL",
+#endif
+#ifdef BTN_THUMBR
+        "BTN_THUMBR",
+#endif
+#ifdef BTN_TL
+        "BTN_TL",
+#endif
+#ifdef BTN_TL2
+        "BTN_TL2",
+#endif
+#ifdef BTN_TR
+        "BTN_TR",
+#endif
+#ifdef BTN_TR2
+        "BTN_TR2",
 #endif
 #ifdef KEY_0
 	"KEY_0",
@@ -1177,6 +1201,9 @@ const char *keys_char[] = {
 };
 
 const int keys_int[] = {
+#ifdef BTN_0
+        BTN_0,
+#endif
 #ifdef BTN_LEFT
 	BTN_LEFT,
 #endif
@@ -1185,6 +1212,27 @@ const int keys_int[] = {
 #endif
 #ifdef BTN_RIGHT
 	BTN_RIGHT,
+#endif
+#ifdef BTN_START
+        BTN_START,
+#endif
+#ifdef BTN_THUMBL
+        BTN_THUMBL,
+#endif
+#ifdef BTN_THUMBR
+        BTN_THUMBR,
+#endif
+#ifdef BTN_TL
+        BTN_TL,
+#endif
+#ifdef BTN_TL2
+        BTN_TL2,
+#endif
+#ifdef BTN_TR
+        BTN_TR,
+#endif
+#ifdef BTN_TR2
+        BTN_TR2,
 #endif
 #ifdef KEY_0
 	KEY_0,
